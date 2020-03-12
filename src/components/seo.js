@@ -70,6 +70,8 @@ function SEO({ description, lang, meta, title }) {
         },
       ].concat(meta)}
     >
+      <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.0.1/dist/alpine.js" defer></script>
+
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css"></link>
     </Helmet>
   )
