@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useState } from "react"
+import TuiTransition from "./tuiTransition"
+import { Transition } from "react-transition-group"
 
 function Header() {
+  let [toogle, setToogle] = useState(true)
+
   return (
     <div className="relative bg-white overflow-hidden">
       <div className="hidden lg:block lg:absolute lg:inset-0">
@@ -97,9 +101,29 @@ function Header() {
               </p>
                 <form className="mt-3 sm:flex">
                   <input aria-label="Email" className="appearance-none block w-full px-3 py-3 border border-gray-300 text-base leading-6 rounded-md placeholder-gray-500 shadow-sm focus:outline-none focus:placeholder-gray-400 focus:shadow-outline focus:border-blue-300 transition duration-150 ease-in-out sm:flex-1" placeholder="Enter your email" />
-                  <button className="mt-3 w-full px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-700 focus:outline-none focus:shadow-outline active:bg-gray-900 transition duration-150 ease-in-out sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto">
-                    Notify me
+                  <Transition
+                    in={toogle}
+                    timeout={{
+                      appear: 0,
+                      enter: 0,
+                      exit: 200,
+                    }}
+                  >
+                    <TuiTransition
+                      show={toogle}
+                      enter="ease-out duration-300"
+                      enterFrom="opacity-0"
+                      enterTo="opacity-100"
+                      leave="ease-in duration-200"
+                      leaveFrom="opacity-100"
+                      leaveTo="opacity-0"
+                    >
+                      <button onClick={() => { toogle = setToogle(!toogle); setTimeout(() => setToogle(true), 1000); }} type="button" className="mt-3 w-full px-6 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 shadow-sm hover:bg-gray-700 focus:outline-none focus:shadow-outline active:bg-gray-900 transition duration-150 ease-in-out sm:mt-0 sm:ml-3 sm:flex-shrink-0 sm:inline-flex sm:items-center sm:w-auto">
+                        Notify me
                 </button>
+                    </TuiTransition>
+                  </Transition>
+
                 </form>
                 <p className="mt-3 text-sm leading-5 text-gray-500">
                   We care about the protection of your data. Read our
