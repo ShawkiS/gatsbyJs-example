@@ -10,8 +10,6 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import Toggle from "./toggle"
-import Dropdown from "./dropdown.jsx"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -26,8 +24,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
-        <Dropdown />
-        <Toggle />
+        <Header />
         <div
           style={{
             margin: `0 auto`,
